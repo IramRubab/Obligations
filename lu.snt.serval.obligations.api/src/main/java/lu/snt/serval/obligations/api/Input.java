@@ -18,6 +18,7 @@ public class Input_DoorOpenTimeOut{
 
     private long time;
     private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
+    private personStatus Availability; //Availability is an enumeration with two literals: isAvailable and notAvailable
 
 }
 
@@ -27,6 +28,9 @@ public class Input_AccessCodeUsage{
 
     private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
     private String Password;
+    private  DoorStatus dStatus;
+    private Availability personStatus;
+
 
 }
 

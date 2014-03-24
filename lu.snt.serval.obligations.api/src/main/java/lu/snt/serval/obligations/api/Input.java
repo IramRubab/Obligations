@@ -1,14 +1,22 @@
 package lu.snt.serval.obligations.api;
 
-public class Input{
+public class Input_CallSmartPerson{
     private ECL eCL;
 
-    private Integer personCount;
+    private long personCount;
 
-    private Integer globalTime;
+    private long globalTime;
 
-    private OStatus status;
-    private SmartPerson person;
-    private Integer time;
+    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
+    private SmartPerson person; // a collection of persons which is contained in ECL along with the priorities
+    private long singletime;
+
+}
+
+public class Input_DoorOpenTimeOut{
+
+
+    private long time;
+    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
 
 }

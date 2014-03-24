@@ -20,3 +20,28 @@ public class Input_DoorOpenTimeOut{
     private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
 
 }
+
+
+public class Input_AccessCodeUsage{
+
+
+    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
+    private String Password;
+
+}
+
+public class Input_AccessCodeExpiry{
+
+
+    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
+    private long time;
+
+}
+
+ublic class Input_CameraAccess{
+
+
+    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
+    private long cameraShutDownTime;
+
+}

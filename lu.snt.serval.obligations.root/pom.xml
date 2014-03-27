@@ -18,8 +18,7 @@
 
 
     <properties>
-        <kmf.version>1.10.3</kmf.version>
-        <kevoree.version>3.1.4</kevoree.version>
+        <kevoree.version>3.5.4</kevoree.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -82,6 +81,17 @@
             <url>http://oss.sonatype.org/content/repositories/releases</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>maven2.kevoree.release</id>
+            <url>http://maven.kevoree.org/archiva/repository/release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven2.kevoree.snapshots</id>
+            <url>http://maven.kevoree.org/archiva/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <pluginRepositories>
         <pluginRepository>

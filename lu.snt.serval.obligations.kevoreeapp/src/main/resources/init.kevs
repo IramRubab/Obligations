@@ -1,0 +1,75 @@
+repo "http://repo1.maven.org/maven2/"
+include mvn:org.kevoree.library.java:org.kevoree.library.java.javaNode:3.5.2
+include mvn:fr.inria.jfilter:jfilter-library:1.3
+include mvn:org.kevoree.library.java:org.kevoree.library.java.channels:3.5.2
+include mvn:uk.com.robust-it:cloning:1.9.0
+include mvn:org.objenesis:objenesis:1.2
+include mvn:lu.snt.serval.obligations:lu.snt.serval.obligations.kevoreeapp:1.0-SNAPSHOT
+include mvn:org.jetbrains.kotlin:kotlin-runtime:0.6.1673
+include mvn:org.kevoree:org.kevoree.api:3.5.4
+include mvn:org.kevoree:org.kevoree.model:3.5.4
+include mvn:org.kevoree.modeling:org.kevoree.modeling.microframework:1.10.3
+include mvn:org.kevoree:org.kevoree.annotation.api:3.5.4
+include mvn:org.kevoree.log:org.kevoree.log:1
+include mvn:org.java-websocket:Java-WebSocket:1.3.0
+include mvn:org.jetbrains.kotlin:kotlin-stdlib:0.6.1673
+include mvn:org.kevoree.kcl:org.kevoree.kcl:7
+include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:3.5.2
+add node0 : JavaNode/3.5.2
+set node0.started = "true"
+add node0.HCS659 : HCS/1.0-SNAPSHOT
+set node0.HCS659.personTimer = "60000"
+set node0.HCS659.globalTimer = "125000"
+set node0.HCS659.doorTimer = "600000"
+set node0.HCS659.emergencyNum = "112"
+set node0.HCS659.started = "true"
+add node0.Door224 : Door/1.0-SNAPSHOT
+set node0.Door224.started = "true"
+add node0.Button537 : Button/1.0-SNAPSHOT
+set node0.Button537.started = "true"
+add node0.DoorLock253 : DoorLock/1.0-SNAPSHOT
+set node0.DoorLock253.started = "true"
+add node0.SMSCenter693 : SMSCenter/1.0-SNAPSHOT
+set node0.SMSCenter693.started = "true"
+add node0.Camera527 : Camera/1.0-SNAPSHOT
+set node0.Camera527.started = "true"
+add AsyncBroa346 : AsyncBroadcast/3.5.2
+set AsyncBroa346.started = "true"
+add AsyncBroa871 : AsyncBroadcast/3.5.2
+set AsyncBroa871.started = "true"
+add AsyncBroa289 : AsyncBroadcast/3.5.2
+set AsyncBroa289.started = "true"
+add AsyncBroa509 : AsyncBroadcast/3.5.2
+set AsyncBroa509.started = "true"
+add AsyncBroa419 : AsyncBroadcast/3.5.2
+set AsyncBroa419.started = "true"
+add AsyncBroa637 : AsyncBroadcast/3.5.2
+set AsyncBroa637.started = "true"
+add AsyncBroa226 : AsyncBroadcast/3.5.2
+set AsyncBroa226.started = "true"
+add AsyncBroa997 : AsyncBroadcast/3.5.2
+set AsyncBroa997.started = "true"
+add AsyncBroa777 : AsyncBroadcast/3.5.2
+set AsyncBroa777.started = "true"
+add sync : WSGroup/3.5.2
+set sync.port/node0 = "9000"
+set sync.started = "true"
+bind node0.Button537.signal AsyncBroa289
+bind node0.HCS659.getContact AsyncBroa419
+bind node0.Door224.command AsyncBroa997
+bind node0.SMSCenter693.smsReceivedHcs AsyncBroa777
+bind node0.DoorLock253.changeCode AsyncBroa346
+bind node0.HCS659.cameraStatus AsyncBroa871
+bind node0.HCS659.doorPassword AsyncBroa346
+bind node0.Door224.status AsyncBroa509
+bind node0.DoorLock253.doorComand AsyncBroa997
+bind node0.SMSCenter693.contact AsyncBroa226
+bind node0.Camera527.changeStatus AsyncBroa871
+bind node0.HCS659.buttonIn AsyncBroa289
+bind node0.HCS659.receiveContact AsyncBroa226
+bind node0.HCS659.sendSms AsyncBroa637
+bind node0.SMSCenter693.sendSms AsyncBroa637
+bind node0.HCS659.getSMS AsyncBroa777
+bind node0.HCS659.doorOpen AsyncBroa509
+bind node0.SMSCenter693.getPerson AsyncBroa419
+attach node0 sync

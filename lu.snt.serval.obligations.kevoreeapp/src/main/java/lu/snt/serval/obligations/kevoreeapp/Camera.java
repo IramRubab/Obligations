@@ -2,6 +2,7 @@ package lu.snt.serval.obligations.kevoreeapp;
 
 import lu.snt.serval.obligations.framework.CameraState;
 import org.kevoree.annotation.*;
+import org.kevoree.log.Log;
 
 @ComponentType
 @Library(name = "Java")
@@ -16,6 +17,7 @@ public class Camera {
     @Input
     public void changeStatus(Object i) {
         cs = (CameraState) i;
+        Log.info("[Camera] Status changed "+ i.toString());
     }
 
     public String getCameraState()

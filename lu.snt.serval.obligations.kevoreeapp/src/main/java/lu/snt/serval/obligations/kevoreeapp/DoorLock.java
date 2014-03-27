@@ -21,7 +21,7 @@ public class DoorLock {
         pass=password;
         Date now = new Date();
         String s="Password changed at "+now.toString();
-        org.kevoree.log.Log.info(s);
+        org.kevoree.log.Log.info("[DoorLoc] "+ s);
 
     }
 
@@ -38,7 +38,7 @@ public class DoorLock {
         {
             s="The password is incorrect";
         }
-        org.kevoree.log.Log.info(s);
+        org.kevoree.log.Log.info("[DoorLoc] "+s);
         return s;
 
     }

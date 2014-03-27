@@ -1,6 +1,7 @@
 package lu.snt.serval.obligations.kevoreeapp;
 
 import lu.snt.serval.obligations.framework.PersonAction;
+import lu.snt.serval.obligations.framework.PersonId;
 import lu.snt.serval.obligations.framework.SMS;
 import org.kevoree.annotation.*;
 import org.kevoree.log.Log;
@@ -14,10 +15,7 @@ import java.util.TimerTask;
 @Library(name = "Java")
 public class Person {
 
-    public String name;
-    public PersonAction behavior;
-    public int waitTime=6000;
-    public String phoneNb="";
+    public PersonId current;
     private static Random random = new Random();
 
 
@@ -28,65 +26,65 @@ public class Person {
     public void receiveSMS(Object i) {
         final SMS msg=(SMS) i;
         SMS tosend;
-        if(((SMS) i).getTo().equals(phoneNb))
+        if(((SMS) i).getTo().equals(current.phoneNb))
         {
-            if(behavior==PersonAction.SENDYES){
-                tosend = new SMS(phoneNb,msg.getFrom(),"yes");
-                Log.info("Person "+name+ " sending yes");
+            if(current.behavior==PersonAction.SENDYES){
+                tosend = new SMS(current.phoneNb,msg.getFrom(),"yes");
+                Log.info("Person "+current.name+ " sending yes");
                 sendSms.send(tosend);
                 return;
             }
-            else if(behavior==PersonAction.SENDNO){
-                tosend = new SMS(phoneNb,msg.getFrom(),"no");
-                Log.info("Person "+name+ " sending no");
+            else if(current.behavior==PersonAction.SENDNO){
+                tosend = new SMS(current.phoneNb,msg.getFrom(),"no");
+                Log.info("Person "+current.name+ " sending no");
                 sendSms.send(tosend);
                 return;
             }
-            else if(behavior==PersonAction.SENDRANDOM){
+            else if(current.behavior==PersonAction.SENDRANDOM){
                 if(random.nextBoolean())
                 {
-                    tosend = new SMS(phoneNb,msg.getFrom(),"yes");
-                    Log.info("Person "+name+ " sending yes");
+                    tosend = new SMS(current.phoneNb,msg.getFrom(),"yes");
+                    Log.info("Person "+current.name+ " sending yes");
                     sendSms.send(tosend);
                     return;
                 }
                 else
                 {
-                    tosend = new SMS(phoneNb,msg.getFrom(),"no");
-                    Log.info("Person "+name+ " sending no");
+                    tosend = new SMS(current.phoneNb,msg.getFrom(),"no");
+                    Log.info("Person "+current.name+ " sending no");
                     sendSms.send(tosend);
                     return;
                 }
             }
-            else if(behavior==PersonAction.DONOTREPLY) {
-                Log.info("Person "+name+ " will not reply");
+            else if(current.behavior==PersonAction.DONOTREPLY) {
+                Log.info("Person "+current.name+ " will not reply");
                 return;
             }
-            else if(behavior==PersonAction.WAITYES) {
+            else if(current.behavior==PersonAction.WAITYES) {
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        SMS tosend2 = new SMS(phoneNb,msg.getFrom(),"yes");
-                        Log.info("Person "+name+ " sending yes after "+ waitTime+ "ms");
+                        SMS tosend2 = new SMS(current.phoneNb,msg.getFrom(),"yes");
+                        Log.info("Person "+current.name+ " sending yes after "+ current.waitTime+ "ms");
                         sendSms.send(tosend2);
                         return;
                     }
-                }, waitTime);
+                }, current.waitTime);
 
 
             }
-            else if(behavior==PersonAction.WAITNO) {
+            else if(current.behavior==PersonAction.WAITNO) {
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        SMS tosend2 = new SMS(phoneNb,msg.getFrom(),"no");
-                        Log.info("Person "+name+ " sending no after "+ waitTime+ "ms");
+                        SMS tosend2 = new SMS(current.phoneNb,msg.getFrom(),"no");
+                        Log.info("Person "+current.name+ " sending no after "+ current.waitTime+ "ms");
                         sendSms.send(tosend2);
                         return;
                     }
-                }, waitTime);
+                }, current.waitTime);
 
 
             }

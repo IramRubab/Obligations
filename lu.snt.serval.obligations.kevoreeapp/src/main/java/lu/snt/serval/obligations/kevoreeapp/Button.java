@@ -16,7 +16,7 @@ public class Button {
     public void pressButton(){
         Date now = new Date();
         String s= "Button pressed at "+ now.toString();
-        org.kevoree.log.Log.info(s);
+        org.kevoree.log.Log.info("[Button] "+ s);
         signal.send(s);
     }
 

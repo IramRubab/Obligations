@@ -1,5 +1,6 @@
 package lu.snt.serval.obligations.kevoreeapp;
 
+import lu.snt.serval.obligations.framework.PersonId;
 import lu.snt.serval.obligations.framework.SMS;
 import org.kevoree.annotation.*;
 import org.kevoree.log.Log;
@@ -14,9 +15,10 @@ public class SMSCenter {
     @Param(defaultValue = "00352611223344")
     String phone="00352611223344";
 
-    private ArrayList<Person> addressBook = new ArrayList<Person>();
+    private ArrayList<PersonId> addressBook = new ArrayList<PersonId>();
 
-    public void AddPerson(Person p)
+
+    public void AddPerson(PersonId p)
     {
         addressBook.add(p);
     }

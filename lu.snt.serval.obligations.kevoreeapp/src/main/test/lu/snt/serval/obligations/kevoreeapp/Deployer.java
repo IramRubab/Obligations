@@ -1,3 +1,5 @@
+package lu.snt.serval.obligations.kevoreeapp;
+
 import org.junit.Test;
 import org.kevoree.tools.test.KevoreeTestCase;
 
@@ -11,6 +13,7 @@ public class Deployer extends KevoreeTestCase {
         //System.out.println("ok");
         bootstrap("node0", "init.kevs");
 
+        
       /*  waitLog("node0", "node0/child1/* INFO: Bootstrap completed", 10000);
         exec("node0", "set child1.started = \"false\"");
         assert (getCurrentModel("node0").findNodesByID("child1").getStarted() == false);

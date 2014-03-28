@@ -9,12 +9,12 @@ import java.util.ArrayList;
  */
 public class CallSmartPerson {
 
-    public ArrayList<PersonId> addressbook;
+    //public ArrayList<PersonId> addressbook; //initially i wrote class SmartPerson instead of this, but changed it into test class and inout class
     private Integer personCount; //I do not see this in kevore?
     private long globalTime;
     private OStatus status;
-    private SmartPerson person;
     private long personTime;
+    private SmartPerson p1;
     private boolean alarmOn;// this is equivalent to button press in kevore code
 
 
@@ -29,7 +29,7 @@ public class CallSmartPerson {
         {
             status=OStatus.active;
             searchHelper();
-            helpRequest(person);
+            helpRequest(p1);
             if(personTime<60000)
             {
                 helpResponse(); //this is personReply in the kevore code
@@ -76,6 +76,10 @@ public class CallSmartPerson {
     public SmartPerson searchHelper() {
 
         return null;
+
+    }
+    public enum OStatus {
+        inactive,active,fulfilled,violated;
 
     }
 

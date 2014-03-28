@@ -10,6 +10,6 @@ import java.util.ArrayList;
 public class InputCallSmartPerson {
     public int globalTime;
     public int personTime;
-    public ArrayList<PersonId> addressbook;
+    public ArrayList<PersonId> addressbook; //this is SmartPerson as u see in CallSmartPerson
     public Boolean personReply;
 }

@@ -1,51 +1,15 @@
 package lu.snt.serval.obligations.api;
 
-public class Input_CallSmartPerson{
-    private ECL eCL;
+import lu.snt.serval.obligations.framework.PersonId;
 
-    private long personCount;
+import java.util.ArrayList;
 
-    private long globalTime;
-
-    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
-    private SmartPerson person; // a collection of persons which is contained in ECL along with the priorities
-    private long singletime;
-
-}
-
-public class Input_DoorOpenTimeOut{
-
-
-    private long time;
-    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
-    private personStatus Availability; //Availability is an enumeration with two literals: isAvailable and notAvailable
-
-}
-
-
-public class Input_AccessCodeUsage{
-
-
-    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
-    private String Password;
-    private  DoorStatus dStatus;
-    private Availability personStatus;
-
-
-}
-
-public class Input_AccessCodeExpiry{
-
-
-    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
-    private long time;
-
-}
-
-ublic class Input_CameraAccess{
-
-
-    private OStatus status; // OStatus is an enumeration comprising of inactive, active, fulfilled, and violated literals.
-    private long cameraShutDownTime;
-
+/**
+ * Created by iram.rubab on 3/27/2014.
+ */
+public class Input {
+    public int globalTime;
+    public int personTime;
+    public ArrayList<PersonId> addressbook;
+    public Boolean personReply;
 }

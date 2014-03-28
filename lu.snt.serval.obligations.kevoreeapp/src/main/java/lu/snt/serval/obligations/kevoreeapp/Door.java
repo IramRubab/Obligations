@@ -31,7 +31,7 @@ public class Door {
             if(da== DoorLockAction.CLOSEDOOR){
                 ds=DoorStatus.LOCKED;
                 Date now=new Date();
-                String s= "Door is opened at "+now.toString();
+                String s= "Door is closed at "+now.toString();
                 org.kevoree.log.Log.info("[Door] "+s);
                 status.send(s);
             }

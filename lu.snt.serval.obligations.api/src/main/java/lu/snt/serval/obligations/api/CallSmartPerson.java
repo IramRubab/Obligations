@@ -1,17 +1,21 @@
 package lu.snt.serval.obligations.api;
 
+import lu.snt.serval.obligations.framework.PersonId;
+
+import java.util.ArrayList;
+
 /**
  * Created by iram.rubab on 3/28/2014.
  */
 public class CallSmartPerson {
 
     public ArrayList<PersonId> addressbook;
-    private Integer personCount;
+    private Integer personCount; //I do not see this in kevore?
     private long globalTime;
     private OStatus status;
     private SmartPerson person;
     private long personTime;
-    private boolean alarmOn;
+    private boolean alarmOn;// this is equivalent to button press in kevore code
 
 
     public CallSmartPerson ()
@@ -28,7 +32,7 @@ public class CallSmartPerson {
             helpRequest(person);
             if(personTime<60000)
             {
-                helpResponse();
+                helpResponse(); //this is personReply in the kevore code
                 status=OStatus.fulfilled;
             }
             else
@@ -40,7 +44,7 @@ public class CallSmartPerson {
                 }
                 else
                 {
-                    callAmbulance();
+                    callAmbulance(); //this is call emergency
                     status=OStatus.fulfilled;
                 }
             }
@@ -67,11 +71,6 @@ public class CallSmartPerson {
 
     public void callAmbulance() {
 
-    }
-    public boolean alarmOn()
-    {
-
-        return false;
     }
 
     public SmartPerson searchHelper() {

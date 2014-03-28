@@ -48,5 +48,5 @@ public class TestCallSmartPerson {
         Input test3 = new Input();
         test3.globalTime= 240000;
         test3.personTime =90000;
-        //flag on emergency call
-}
+        //flag on emergency call?
+}}

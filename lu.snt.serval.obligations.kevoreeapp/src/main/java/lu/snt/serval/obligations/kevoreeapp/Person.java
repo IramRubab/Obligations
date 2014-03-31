@@ -19,8 +19,26 @@ import java.util.TimerTask;
 @Library(name = "Java")
 public class Person {
 
-    public PersonId personId= new PersonId();
+    //public PersonId personId= new PersonId();
     private static Random random = new Random();
+
+    @Param(defaultValue = "Emergency")
+    public String name ="Emergency";
+
+    @Param(defaultValue = "0")
+    public int behavior= 0;
+
+    @Param(defaultValue = "1000")
+    public int waitReplyTime =1000;
+
+    @Param(defaultValue = "1000")
+    public int waitDoorOpenTime=1000;
+
+    @Param(defaultValue = "112")
+    public String phoneNb="112";
+
+    @Param(defaultValue = "-1")
+    public int order=-1;
 
 
 
@@ -38,10 +56,10 @@ public class Person {
 
         try {
             final SMS msg = (SMS) i;
-            Log.info("[Person] " + personId.name + " received this sms: " + msg.getMessage());
+            if (((SMS) i).getTo().equals(phoneNb)) {
+                Log.info("[" + name + "] received this sms: " + msg.getMessage());
+                SMS tosend;
 
-            SMS tosend;
-            if (((SMS) i).getTo().equals(personId.phoneNb)) {
                 if (msg.getMessage().contains("code:")) {
                     String splmsg[] = msg.getMessage().split("code:");
                     final String code = splmsg[1].trim();
@@ -53,11 +71,11 @@ public class Person {
                             timer.schedule(new TimerTask() {
                                 @Override
                                 public void run() {
-                                    Log.info("Person " + personId.name + " trying to open the door after " + personId.waitDoorOpenTime + "ms, with password: "+code);
+                                    Log.info("[" + name + "] trying to open the door after " + waitDoorOpenTime + "ms, with password: "+code);
                                     openDoor.send(code);
                                     return;
                                 }
-                            }, personId.waitReplyTime);
+                            }, waitReplyTime);
                             break;
 
                         }
@@ -66,55 +84,55 @@ public class Person {
 
                 else if (msg.getMessage().contains("needs help")) {
 
-                    if (personId.behavior == PersonAction.SENDYES) {
-                        tosend = new SMS(personId.phoneNb, msg.getFrom(), "yes");
-                        Log.info("Person " + personId.name + " sending yes");
+                    if (behavior == PersonAction.SENDYES.ordinal()) {
+                        tosend = new SMS(phoneNb, msg.getFrom(), "yes");
+                        Log.info("[" + name + "] Replying yes");
                         sendSms.send(tosend);
                         return;
-                    } else if (personId.behavior == PersonAction.SENDNO) {
-                        tosend = new SMS(personId.phoneNb, msg.getFrom(), "no");
-                        Log.info("Person " + personId.name + " sending no");
+                    } else if (behavior == PersonAction.SENDNO.ordinal()) {
+                        tosend = new SMS(phoneNb, msg.getFrom(), "no");
+                        Log.info("[" + name + "] Replying no");
                         sendSms.send(tosend);
                         return;
-                    } else if (personId.behavior == PersonAction.SENDRANDOM) {
+                    } else if (behavior == PersonAction.SENDRANDOM.ordinal()) {
                         if (random.nextBoolean()) {
-                            tosend = new SMS(personId.phoneNb, msg.getFrom(), "yes");
-                            Log.info("Person " + personId.name + " sending yes");
+                            tosend = new SMS(phoneNb, msg.getFrom(), "yes");
+                            Log.info("[" + name + "] Replying yes");
                             sendSms.send(tosend);
                             return;
                         } else {
-                            tosend = new SMS(personId.phoneNb, msg.getFrom(), "no");
-                            Log.info("Person " + personId.name + " sending no");
+                            tosend = new SMS(phoneNb, msg.getFrom(), "no");
+                            Log.info("[" + name + "] Replying no");
                             sendSms.send(tosend);
                             return;
                         }
-                    } else if (personId.behavior == PersonAction.DONOTREPLY) {
-                        Log.info("Person " + personId.name + " will not reply");
+                    } else if (behavior == PersonAction.DONOTREPLY.ordinal()) {
+                        Log.info("[" + name + "] will not reply");
                         return;
-                    } else if (personId.behavior == PersonAction.WAITYES) {
+                    } else if (behavior == PersonAction.WAITYES.ordinal()) {
                         Timer timer = new Timer();
                         timer.schedule(new TimerTask() {
                             @Override
                             public void run() {
-                                SMS tosend2 = new SMS(personId.phoneNb, msg.getFrom(), "yes");
-                                Log.info("Person " + personId.name + " sending yes after " + personId.waitReplyTime + "ms");
+                                SMS tosend2 = new SMS(phoneNb, msg.getFrom(), "yes");
+                                Log.info("[" + name + "] Replying yes after " + waitReplyTime + "ms");
                                 sendSms.send(tosend2);
                                 return;
                             }
-                        }, personId.waitReplyTime);
+                        }, waitReplyTime);
 
 
-                    } else if (personId.behavior == PersonAction.WAITNO) {
+                    } else if (behavior == PersonAction.WAITNO.ordinal()) {
                         Timer timer = new Timer();
                         timer.schedule(new TimerTask() {
                             @Override
                             public void run() {
-                                SMS tosend2 = new SMS(personId.phoneNb, msg.getFrom(), "no");
-                                Log.info("Person " + personId.name + " sending no after " + personId.waitReplyTime + "ms");
+                                SMS tosend2 = new SMS(phoneNb, msg.getFrom(), "no");
+                                Log.info("[" + name + "] Replying no after " + waitReplyTime + "ms");
                                 sendSms.send(tosend2);
                                 return;
                             }
-                        }, personId.waitReplyTime);
+                        }, waitReplyTime);
 
 
                     }
@@ -123,7 +141,7 @@ public class Person {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
 
 

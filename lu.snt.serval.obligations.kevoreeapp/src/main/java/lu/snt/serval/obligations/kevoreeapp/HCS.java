@@ -114,6 +114,9 @@ public class HCS {
                     globalTime.cancel();
                 }
 
+                SMS msgCode = new SMS("",currentPID.phoneNb,messageOK+String.valueOf(currentPassword));
+                sendSms.send(msgCode);
+
                 doorOpen = new Timer();
                 doorOpen.schedule(new TimerTask() {
                     @Override
@@ -186,6 +189,7 @@ public class HCS {
         }
         catch (Exception ex)
         {
+          //  ex.printStackTrace();
             Log.info("[HCS] Unable to get new contact, calling the emergency");
             currentPID = new PersonId();
             callEmergency();

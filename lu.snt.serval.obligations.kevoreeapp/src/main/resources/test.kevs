@@ -18,72 +18,82 @@ include mvn:lu.snt.serval.obligations:lu.snt.serval.obligations.kevoreeapp:1.0-S
 include mvn:org.kevoree:org.kevoree.api:3.5.4
 add node0 : JavaNode/3.5.2
 set node0.started = "true"
+add node0.SMSCenter344 : SMSCenter/1.0-SNAPSHOT
+set node0.SMSCenter344.started = "true"
 add node0.Emergency : Person/1.0-SNAPSHOT
+set node0.Emergency.behavior = "0"
+set node0.Emergency.name = "Emergency"
+set node0.Emergency.waitReplyTime = "1000"
+set node0.Emergency.waitDoorOpenTime = "1000"
+set node0.Emergency.phoneNb = "112"
+set node0.Emergency.order = "-1"
 set node0.Emergency.started = "true"
-add node0.Door454 : Door/1.0-SNAPSHOT
-set node0.Door454.started = "true"
-add node0.SMSCenter113 : SMSCenter/1.0-SNAPSHOT
-set node0.SMSCenter113.started = "true"
-add node0.Camera467 : Camera/1.0-SNAPSHOT
-set node0.Camera467.started = "true"
-add node0.HCS537 : HCS/1.0-SNAPSHOT
-set node0.HCS537.started = "true"
-add node0.DoorLock776 : DoorLock/1.0-SNAPSHOT
-set node0.DoorLock776.started = "true"
-add node0.ToyConsol179 : ToyConsole/3.5.2
-set node0.ToyConsol179.started = "true"
-add node0.Button600 : Button/1.0-SNAPSHOT
-set node0.Button600.started = "true"
-add AsyncBroa870 : AsyncBroadcast/3.5.2
-set AsyncBroa870.started = "true"
-add AsyncBroa389 : AsyncBroadcast/3.5.2
-set AsyncBroa389.started = "true"
-add AsyncBroa142 : AsyncBroadcast/3.5.2
-set AsyncBroa142.started = "true"
-add AsyncBroa282 : AsyncBroadcast/3.5.2
-set AsyncBroa282.started = "true"
-add AsyncBroa24 : AsyncBroadcast/3.5.2
-set AsyncBroa24.started = "true"
-add AsyncBroa284 : AsyncBroadcast/3.5.2
-set AsyncBroa284.started = "true"
-add AsyncBroa420 : AsyncBroadcast/3.5.2
-set AsyncBroa420.started = "true"
-add AsyncBroa133 : AsyncBroadcast/3.5.2
-set AsyncBroa133.started = "true"
-add AsyncBroa115 : AsyncBroadcast/3.5.2
-set AsyncBroa115.started = "true"
-add AsyncBroa286 : AsyncBroadcast/3.5.2
-set AsyncBroa286.started = "true"
-add AsyncBroa212 : AsyncBroadcast/3.5.2
-set AsyncBroa212.started = "true"
-add AsyncBroa57 : AsyncBroadcast/3.5.2
-set AsyncBroa57.started = "true"
+add node0.Button31 : Button/1.0-SNAPSHOT
+set node0.Button31.started = "true"
+add node0.HCS883 : HCS/1.0-SNAPSHOT
+set node0.HCS883.personTimer = "60000"
+set node0.HCS883.emergencyNum = "112"
+set node0.HCS883.globalTimer = "125000"
+set node0.HCS883.doorTimer = "600000"
+set node0.HCS883.started = "true"
+add node0.ToyConsol672 : ToyConsole/3.5.2
+set node0.ToyConsol672.started = "true"
+add node0.DoorLock795 : DoorLock/1.0-SNAPSHOT
+set node0.DoorLock795.started = "true"
+add node0.Camera935 : Camera/1.0-SNAPSHOT
+set node0.Camera935.started = "true"
+add node0.Door528 : Door/1.0-SNAPSHOT
+set node0.Door528.started = "true"
+add AsyncBroa52 : AsyncBroadcast/3.5.2
+set AsyncBroa52.started = "true"
+add AsyncBroa535 : AsyncBroadcast/3.5.2
+set AsyncBroa535.started = "true"
+add AsyncBroa863 : AsyncBroadcast/3.5.2
+set AsyncBroa863.started = "true"
+add AsyncBroa155 : AsyncBroadcast/3.5.2
+set AsyncBroa155.started = "true"
+add AsyncBroa472 : AsyncBroadcast/3.5.2
+set AsyncBroa472.started = "true"
+add AsyncBroa809 : AsyncBroadcast/3.5.2
+set AsyncBroa809.started = "true"
+add AsyncBroa435 : AsyncBroadcast/3.5.2
+set AsyncBroa435.started = "true"
+add AsyncBroa88 : AsyncBroadcast/3.5.2
+set AsyncBroa88.started = "true"
+add AsyncBroa393 : AsyncBroadcast/3.5.2
+set AsyncBroa393.started = "true"
+add AsyncBroa967 : AsyncBroadcast/3.5.2
+set AsyncBroa967.started = "true"
+add AsyncBroa696 : AsyncBroadcast/3.5.2
+set AsyncBroa696.started = "true"
+add AsyncBroa171 : AsyncBroadcast/3.5.2
+set AsyncBroa171.started = "true"
 add sync : WSGroup/3.5.2
 set sync.port/node0 = "9000"
 set sync.started = "true"
-bind node0.HCS537.getContact AsyncBroa142
-bind node0.Camera467.changeStatus AsyncBroa389
-bind node0.SMSCenter113.sendSms AsyncBroa282
-bind node0.Button600.signal AsyncBroa115
-bind node0.Door454.command AsyncBroa57
-bind node0.SMSCenter113.contact AsyncBroa24
-bind node0.HCS537.getSMS AsyncBroa133
-bind node0.SMSCenter113.smsReceivedHcs AsyncBroa133
-bind node0.DoorLock776.doorComand AsyncBroa57
-bind node0.Door454.status AsyncBroa870
-bind node0.SMSCenter113.subscribers AsyncBroa420
-bind node0.DoorLock776.openDoor AsyncBroa212
-bind node0.Emergency.receiveSMS AsyncBroa420
-bind node0.SMSCenter113.getPerson AsyncBroa142
-bind node0.Emergency.sendSms AsyncBroa286
-bind node0.ToyConsol179.textEntered AsyncBroa115
-bind node0.HCS537.doorOpen AsyncBroa870
-bind node0.HCS537.cameraStatus AsyncBroa389
-bind node0.Emergency.openDoor AsyncBroa212
-bind node0.HCS537.sendSms AsyncBroa282
-bind node0.HCS537.buttonIn AsyncBroa115
-bind node0.DoorLock776.changeCode AsyncBroa284
-bind node0.HCS537.doorPassword AsyncBroa284
-bind node0.HCS537.receiveContact AsyncBroa24
-bind node0.SMSCenter113.receiveSms AsyncBroa286
+bind node0.SMSCenter344.receiveSms AsyncBroa52
+bind node0.Door528.status AsyncBroa393
+bind node0.DoorLock795.openDoor AsyncBroa155
+bind node0.SMSCenter344.smsReceivedHcs AsyncBroa967
+bind node0.SMSCenter344.subscribers AsyncBroa535
+bind node0.Button31.signal AsyncBroa472
+bind node0.Emergency.sendSms AsyncBroa52
+bind node0.HCS883.getSMS AsyncBroa967
+bind node0.SMSCenter344.getPerson AsyncBroa863
+bind node0.SMSCenter344.sendSms AsyncBroa171
+bind node0.ToyConsol672.textEntered AsyncBroa472
+bind node0.HCS883.buttonIn AsyncBroa472
+bind node0.HCS883.cameraStatus AsyncBroa809
+bind node0.DoorLock795.changeCode AsyncBroa435
+bind node0.Emergency.receiveSMS AsyncBroa535
+bind node0.HCS883.getContact AsyncBroa863
+bind node0.DoorLock795.doorComand AsyncBroa88
+bind node0.HCS883.receiveContact AsyncBroa696
+bind node0.HCS883.doorOpen AsyncBroa393
+bind node0.HCS883.sendSms AsyncBroa171
+bind node0.Door528.command AsyncBroa88
+bind node0.Camera935.changeStatus AsyncBroa809
+bind node0.Emergency.openDoor AsyncBroa155
+bind node0.SMSCenter344.contact AsyncBroa696
+bind node0.HCS883.doorPassword AsyncBroa435
 attach node0 sync

@@ -31,6 +31,8 @@ public class DoorLock {
 
         String s = "";
 
+        //org.kevoree.log.Log.info(password+ "/"+pass);
+
         if(password.equals(pass))
         {
             doorComand.send(DoorLockAction.OPENDOOR);

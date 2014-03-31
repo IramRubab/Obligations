@@ -11,6 +11,9 @@ import java.util.ArrayList;
 public class TestCallSmartPerson {
 
     public static void main(String[] args){
+
+
+
         // Test case 1
         Input test1 = new Input();
         test1.globalTime=0000;
@@ -28,6 +31,7 @@ public class TestCallSmartPerson {
         p2.name= "Iram";
         p2.behavior= PersonAction.WAITYES;
         p2.waitReplyTime =90000; // means that Iram will wait 90 seconds before she replies yes
+        p2.waitDoorOpenTime = 20000; //means that a person will wait 20 seconds after he replies yes and before he arrives and tries to open the door
         p2.phoneNb= "124";
         t1a1.add(p2);
 
@@ -37,6 +41,12 @@ public class TestCallSmartPerson {
         p3.waitReplyTime =90000; // means that Iram will wait 90 seconds before she replies yes
         p3.phoneNb= "125";
         t1a1.add(p3);
+
+
+        //TestCase 2
+
+
+
         assertTrue(test1.personReply == true);
 
         Input test2 = new Input();

@@ -77,6 +77,7 @@ public class HCS {
 
     private void startEmergency()
     {
+        setCurrentPassword();
         globalTime = new Timer();
         globalTime.schedule(new TimerTask() {
             @Override
@@ -206,7 +207,7 @@ public class HCS {
 
     @Start
     public void start() {
-        setCurrentPassword();
+
     }
 
     @Stop

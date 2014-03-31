@@ -24,7 +24,7 @@ public class HCS {
     @Param(defaultValue = "112")
     String emergencyNum="112";
 
-    private String messageOK = "Thanks for your help, here is the code to open the door: ";
+    private String messageOK = "Thanks for your help, to open the door, use this code: ";
     private String message="Your neighbor Mme Annette needs help, check this video camera link, please reply yes if you can help in less than one minute.";
     private String emergencyMsg = "Annette becker needs help, please send an ambulance to this address: 2 rue de la gare, L0161, Luxembourg.";
 
@@ -88,6 +88,7 @@ public class HCS {
             }
         }, globalTimer);
         cameraStatus.send(CameraState.CONNECTED);
+        askNextPerson();
 
     }
 
@@ -105,8 +106,12 @@ public class HCS {
         if(msg.getFrom().equals(currentPID.phoneNb)){
             if(msg.getMessage().contains("yes")){
                 personReply=true;
-                nextPerson.cancel();
-                globalTime.cancel();
+                if(nextPerson!=null){
+                    nextPerson.cancel();
+                }
+                if(globalTime!=null){
+                    globalTime.cancel();
+                }
 
                 doorOpen = new Timer();
                 doorOpen.schedule(new TimerTask() {
@@ -135,9 +140,11 @@ public class HCS {
     }
 
     public void reset(){
-        Log.info("[HCS] Resetting");
+        Log.info("[HCS] Resetting, going back to normal context");
         currentContex=Context.NORMAL;
         setCurrentPassword();
+        cameraStatus.send(CameraState.DISCONNECTED);
+
 
         if(globalTime!=null)
         {
@@ -179,6 +186,7 @@ public class HCS {
         catch (Exception ex)
         {
             Log.info("[HCS] Unable to get new contact, calling the emergency");
+            currentPID = new PersonId();
             callEmergency();
         }
 
@@ -187,7 +195,7 @@ public class HCS {
 
     private void callEmergency(){
         if(currentContex== Context.EMERGENCY) {
-            SMS emergencySMS = new SMS("", emergencyNum, emergencyMsg+" To unlock the door, please use this password; "+currentPassword);
+            SMS emergencySMS = new SMS("", emergencyNum, emergencyMsg+" To open the door, please use this code: "+currentPassword);
             sendSms.send(emergencySMS);
             Log.info("[HCS] Message sent to emergency");
         }

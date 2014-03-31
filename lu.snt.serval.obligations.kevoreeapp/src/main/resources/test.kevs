@@ -1,0 +1,89 @@
+repo "http://repo1.maven.org/maven2/"
+include mvn:org.kevoree.library.java:org.kevoree.library.java.channels:3.5.2
+include mvn:org.kevoree:org.kevoree.model:3.5.4
+include mvn:org.kevoree.kcl:org.kevoree.kcl:7
+include mvn:org.objenesis:objenesis:1.2
+include mvn:org.kevoree.library.java:org.kevoree.library.java.javaNode:3.5.2
+include mvn:org.kevoree.library.java:org.kevoree.library.java.toys:3.5.2
+include mvn:org.kevoree.modeling:org.kevoree.modeling.microframework:1.10.3
+include mvn:org.kevoree.log:org.kevoree.log:1
+include mvn:org.java-websocket:Java-WebSocket:1.3.0
+include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:3.5.2
+include mvn:uk.com.robust-it:cloning:1.9.0
+include mvn:fr.inria.jfilter:jfilter-library:1.3
+include mvn:org.jetbrains.kotlin:kotlin-stdlib:0.6.1673
+include mvn:org.jetbrains.kotlin:kotlin-runtime:0.6.1673
+include mvn:org.kevoree:org.kevoree.annotation.api:3.5.4
+include mvn:lu.snt.serval.obligations:lu.snt.serval.obligations.kevoreeapp:1.0-SNAPSHOT
+include mvn:org.kevoree:org.kevoree.api:3.5.4
+add node0 : JavaNode/3.5.2
+set node0.started = "true"
+add node0.Emergency : Person/1.0-SNAPSHOT
+set node0.Emergency.started = "true"
+add node0.Door454 : Door/1.0-SNAPSHOT
+set node0.Door454.started = "true"
+add node0.SMSCenter113 : SMSCenter/1.0-SNAPSHOT
+set node0.SMSCenter113.started = "true"
+add node0.Camera467 : Camera/1.0-SNAPSHOT
+set node0.Camera467.started = "true"
+add node0.HCS537 : HCS/1.0-SNAPSHOT
+set node0.HCS537.started = "true"
+add node0.DoorLock776 : DoorLock/1.0-SNAPSHOT
+set node0.DoorLock776.started = "true"
+add node0.ToyConsol179 : ToyConsole/3.5.2
+set node0.ToyConsol179.started = "true"
+add node0.Button600 : Button/1.0-SNAPSHOT
+set node0.Button600.started = "true"
+add AsyncBroa870 : AsyncBroadcast/3.5.2
+set AsyncBroa870.started = "true"
+add AsyncBroa389 : AsyncBroadcast/3.5.2
+set AsyncBroa389.started = "true"
+add AsyncBroa142 : AsyncBroadcast/3.5.2
+set AsyncBroa142.started = "true"
+add AsyncBroa282 : AsyncBroadcast/3.5.2
+set AsyncBroa282.started = "true"
+add AsyncBroa24 : AsyncBroadcast/3.5.2
+set AsyncBroa24.started = "true"
+add AsyncBroa284 : AsyncBroadcast/3.5.2
+set AsyncBroa284.started = "true"
+add AsyncBroa420 : AsyncBroadcast/3.5.2
+set AsyncBroa420.started = "true"
+add AsyncBroa133 : AsyncBroadcast/3.5.2
+set AsyncBroa133.started = "true"
+add AsyncBroa115 : AsyncBroadcast/3.5.2
+set AsyncBroa115.started = "true"
+add AsyncBroa286 : AsyncBroadcast/3.5.2
+set AsyncBroa286.started = "true"
+add AsyncBroa212 : AsyncBroadcast/3.5.2
+set AsyncBroa212.started = "true"
+add AsyncBroa57 : AsyncBroadcast/3.5.2
+set AsyncBroa57.started = "true"
+add sync : WSGroup/3.5.2
+set sync.port/node0 = "9000"
+set sync.started = "true"
+bind node0.HCS537.getContact AsyncBroa142
+bind node0.Camera467.changeStatus AsyncBroa389
+bind node0.SMSCenter113.sendSms AsyncBroa282
+bind node0.Button600.signal AsyncBroa115
+bind node0.Door454.command AsyncBroa57
+bind node0.SMSCenter113.contact AsyncBroa24
+bind node0.HCS537.getSMS AsyncBroa133
+bind node0.SMSCenter113.smsReceivedHcs AsyncBroa133
+bind node0.DoorLock776.doorComand AsyncBroa57
+bind node0.Door454.status AsyncBroa870
+bind node0.SMSCenter113.subscribers AsyncBroa420
+bind node0.DoorLock776.openDoor AsyncBroa212
+bind node0.Emergency.receiveSMS AsyncBroa420
+bind node0.SMSCenter113.getPerson AsyncBroa142
+bind node0.Emergency.sendSms AsyncBroa286
+bind node0.ToyConsol179.textEntered AsyncBroa115
+bind node0.HCS537.doorOpen AsyncBroa870
+bind node0.HCS537.cameraStatus AsyncBroa389
+bind node0.Emergency.openDoor AsyncBroa212
+bind node0.HCS537.sendSms AsyncBroa282
+bind node0.HCS537.buttonIn AsyncBroa115
+bind node0.DoorLock776.changeCode AsyncBroa284
+bind node0.HCS537.doorPassword AsyncBroa284
+bind node0.HCS537.receiveContact AsyncBroa24
+bind node0.SMSCenter113.receiveSms AsyncBroa286
+attach node0 sync

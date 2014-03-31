@@ -20,12 +20,15 @@ public class DoorLock {
     public void changeCode(String password){
         pass=password;
         Date now = new Date();
-        String s="Password changed at "+now.toString();
+        String s="Password changed at "+now.toString()+" to "+ password;
         org.kevoree.log.Log.info("[DoorLoc] "+ s);
 
     }
 
-    public String openDoor(String password ){
+    @Input
+    public void openDoor(Object i){
+        String password = (String) i;
+
         String s = "";
 
         if(password.equals(pass))
@@ -39,8 +42,7 @@ public class DoorLock {
             s="The password is incorrect";
         }
         org.kevoree.log.Log.info("[DoorLoc] "+s);
-        return s;
-
+        //return s;
     }
 
     @Start

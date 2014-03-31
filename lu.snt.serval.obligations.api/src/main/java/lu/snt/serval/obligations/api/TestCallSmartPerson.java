@@ -27,14 +27,14 @@ public class TestCallSmartPerson {
         PersonId p2 = new PersonId();
         p2.name= "Iram";
         p2.behavior= PersonAction.WAITYES;
-        p2.waitTime=90000; // means that Iram will wait 90 seconds before she replies yes
+        p2.waitReplyTime =90000; // means that Iram will wait 90 seconds before she replies yes
         p2.phoneNb= "124";
         t1a1.add(p2);
 
         PersonId p3 = new PersonId();
         p3.name= "Francois";
         p3.behavior= PersonAction.WAITYES;
-        p3.waitTime=90000; // means that Iram will wait 90 seconds before she replies yes
+        p3.waitReplyTime =90000; // means that Iram will wait 90 seconds before she replies yes
         p3.phoneNb= "125";
         t1a1.add(p3);
         assertTrue(test1.personReply == true);

@@ -58,17 +58,18 @@ public class SMSCenter {
 
     @Input
     public void sendSms(Object i) {
+
         SMS msg= (SMS) i;
         msg.setFrom(phone);
+        Log.info("[SMS center] Message received from HCS, Forwarding to: "+msg.getTo());
         subscribers.send(msg);
-        Log.info("message sent to "+msg.getTo());
     }
 
     @Input
     public void receiveSms(Object i) {
+        SMS msg= (SMS) i;
+        Log.info("[SMS center] Message received from: "+msg.getFrom()+ ", forwarding to HCS");
         smsReceivedHcs.send(i);
-
-
     }
 
     @Start

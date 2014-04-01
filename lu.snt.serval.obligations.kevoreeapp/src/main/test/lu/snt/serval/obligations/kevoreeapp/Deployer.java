@@ -17,29 +17,30 @@ public class Deployer extends KevoreeTestCase {
     @Test
     public void startupChildTest() throws Exception {
         //System.out.println("ok");
-        bootstrap("node0", "test.kevs");
+        bootstrap("node0", "test.kevs");    // Bootstrap and start kevoree
         ContainerRoot cr= this.getCurrentModel("node0");
 
        // JSONModelLoader loader = new JSONModelLoader();
        // ContainerRoot cr= (ContainerRoot) loader.loadModelFromStream(Deployer.class.getClassLoader().getResourceAsStream("test.json")).get(0);
 
-        TestCaseBuilder tcb= new TestCaseBuilder(cr);
+        TestCaseBuilder tcb= new TestCaseBuilder(cr); //Create a new test case
 
-        tcb.ChangeHCSSetting(15000,100000,10000);
+        tcb.ChangeHCSSetting(10000,18000,10000);   //change personTimer, globalTimer, doorTimer in HCS configuration
 
-        ArrayList<PersonId> t1a1 = new ArrayList<PersonId>();
+        ArrayList<PersonId> t1a1 = new ArrayList<PersonId>();  // Create an address book with person behaviors
 
         PersonId p1 = new PersonId();
         p1.name= "Assaad";
-        p1.behavior= PersonAction.SENDNO;
+        p1.behavior= PersonAction.WAITNO;
+        p1.waitReplyTime =20000;
         p1.phoneNb= "123";
         t1a1.add(p1);
 
         PersonId p2 = new PersonId();
         p2.name= "Iram";
-        p2.behavior= PersonAction.WAITYES;
-        p2.waitReplyTime =2000;
-        p2.waitDoorOpenTime = 20000;
+        p2.behavior= PersonAction.WAITNO;  //Whenever you choose waityes or waitno, you should provide the waitreplytime, otherwise it is not needed
+        p2.waitReplyTime =20000;
+        p2.waitDoorOpenTime = 20000;   //whenever you choose yes or waityes, you have to provide the time after which the person will arrive and try to open door
         p2.phoneNb= "124";
         t1a1.add(p2);
 
@@ -51,13 +52,13 @@ public class Deployer extends KevoreeTestCase {
         p3.phoneNb= "125";
         t1a1.add(p3);
 
-        tcb.addAddressBook(t1a1);
+        tcb.addAddressBook(t1a1);  //Add address book to test case
 
-        this.deploy("node0",cr);
+        this.deploy("node0",cr);  //this mendatory to deploy Kevoree
 
 
         
-      waitLog("node0", "node0/* INFO: [HCS] Done", 1000000);
+      waitLog("node0", "node0/* INFO: [HCS] Done", 1000000); //that the test case is completed successfully whenever the HCS prints done on the log
      /*   exec("node0", "set child1.started = \"false\"");
         assert (getCurrentModel("node0").findNodesByID("child1").getStarted() == false);
         waitLog("node0", "node0/* INFO: Stopping nodes[child1]", 5000);

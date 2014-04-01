@@ -25,7 +25,7 @@ public class Deployer extends KevoreeTestCase {
 
         TestCaseBuilder tcb= new TestCaseBuilder(cr); //Create a new test case
 
-        tcb.ChangeHCSSetting(10000,18000,10000);   //change personTimer, globalTimer, doorTimer in HCS configuration
+        tcb.ChangeHCSSetting(10000,18000,10000);   //for changing personTimer, globalTimer, doorTimer in HCS configuration
 
         ArrayList<PersonId> t1a1 = new ArrayList<PersonId>();  // Create an address book with person behaviors
 

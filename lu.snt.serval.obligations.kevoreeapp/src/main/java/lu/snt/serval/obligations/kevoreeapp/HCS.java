@@ -148,6 +148,7 @@ public class HCS {
         currentContex=Context.NORMAL;
         setCurrentPassword();
         cameraStatus.send(CameraState.DISCONNECTED);
+        Log.info("[HCS] Done");
 
 
         if(globalTime!=null)

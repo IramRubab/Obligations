@@ -56,10 +56,8 @@ public class Deployer extends KevoreeTestCase {
         this.deploy("node0",cr);
 
 
-
-
         
-      waitLog("node0", "node0/child1/* INFO: Bootstrap completed", 1000000);
+      waitLog("node0", "node0/* INFO: [HCS] Done", 1000000);
      /*   exec("node0", "set child1.started = \"false\"");
         assert (getCurrentModel("node0").findNodesByID("child1").getStarted() == false);
         waitLog("node0", "node0/* INFO: Stopping nodes[child1]", 5000);

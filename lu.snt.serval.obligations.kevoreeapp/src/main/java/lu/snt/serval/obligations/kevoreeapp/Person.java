@@ -75,7 +75,7 @@ public class Person {
                                     openDoor.send(code);
                                     return;
                                 }
-                            }, waitReplyTime);
+                            }, waitDoorOpenTime);
                             break;
 
                         }

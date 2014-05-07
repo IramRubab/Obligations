@@ -9,7 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @ComponentType
-@Library(name = "Java")
+@Library(name = "SmartHospital")
 public class Instrument {
 
 
@@ -27,7 +27,7 @@ public class Instrument {
 
 
     @Output
-    org.kevoree.api.Port pulse;
+    org.kevoree.api.Port pulseOut;
 
 
     private void startTimer(){
@@ -39,7 +39,7 @@ public class Instrument {
                 msg.date=new Date();
                 msg.name=context.getInstanceName();
                 msg.measurement= measurements;
-                pulse.send(msg);
+                pulseOut.send(msg);
             }
         }, 0,interval);
     }

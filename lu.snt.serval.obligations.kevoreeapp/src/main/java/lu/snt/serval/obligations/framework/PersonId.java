@@ -8,5 +8,6 @@ public class PersonId {
     public PersonAction behavior= PersonAction.SENDYES;
     public int waitReplyTime =1000;
     public int waitDoorOpenTime=1000;
+    public int retryTime=1000;
     public String phoneNb="112";
 }

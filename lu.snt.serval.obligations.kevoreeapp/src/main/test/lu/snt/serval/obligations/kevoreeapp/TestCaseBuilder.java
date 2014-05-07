@@ -82,6 +82,9 @@ public class TestCaseBuilder {
                 command = "set node0."+pid.name+".waitReplyTime = \""+String.valueOf(pid.waitReplyTime)+"\"";
                 engine.execute(command,containerRoot);
 
+                command = "set node0."+pid.name+".retryTime = \""+String.valueOf(pid.retryTime)+"\"";
+                engine.execute(command,containerRoot);
+
                 command = "set node0."+pid.name+".phoneNb = \""+String.valueOf(pid.phoneNb)+"\"";
                 engine.execute(command,containerRoot);
 

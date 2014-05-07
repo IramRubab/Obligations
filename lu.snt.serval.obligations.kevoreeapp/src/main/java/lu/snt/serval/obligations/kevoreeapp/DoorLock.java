@@ -22,6 +22,7 @@ public class DoorLock {
         Date now = new Date();
         String s="Password changed at "+now.toString()+" to "+ password;
         org.kevoree.log.Log.info("[DoorLoc] "+ s);
+        doorComand.send(DoorLockAction.CLOSEDOOR);
 
     }
 

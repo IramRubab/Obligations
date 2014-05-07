@@ -1,9 +1,6 @@
 package lu.snt.serval.obligations.kevoreeapp;
 
-import lu.snt.serval.obligations.framework.CameraState;
-import lu.snt.serval.obligations.framework.Context;
-import lu.snt.serval.obligations.framework.PersonId;
-import lu.snt.serval.obligations.framework.SMS;
+import lu.snt.serval.obligations.framework.*;
 import org.kevoree.annotation.*;
 import org.kevoree.log.Log;
 
@@ -139,8 +136,19 @@ public class HCS {
 
     @Input
     public void doorOpen(Object i){
-        Log.info("[HCS - door] Door open detected. ");
-        reset();
+        DoorStatus ds= (DoorStatus) i;
+
+        if(ds==DoorStatus.OPENED){
+            Log.info("[HCS - door] Door open detected. ");
+            if(currentContex== Context.EMERGENCY){
+                reset();
+            }
+
+        }
+        else if(ds==DoorStatus.LOCKED){
+            Log.info("[HCS - door] Door is closed. ");
+        }
+
     }
 
     public void reset(){
@@ -148,7 +156,7 @@ public class HCS {
         currentContex=Context.NORMAL;
         setCurrentPassword();
         cameraStatus.send(CameraState.DISCONNECTED);
-        Log.info("[HCS] Done");
+        Log.info("[HCS] Emergrncy is over - Done");
 
 
         if(globalTime!=null)

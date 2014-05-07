@@ -34,6 +34,9 @@ public class Person {
     @Param(defaultValue = "1000")
     public int waitDoorOpenTime=1000;
 
+    @Param(defaultValue = "1000")
+    public int retryTime=1000;
+
     @Param(defaultValue = "112")
     public String phoneNb="112";
 
@@ -73,6 +76,18 @@ public class Person {
                                 public void run() {
                                     Log.info("[" + name + "] trying to open the door after " + waitDoorOpenTime + "ms, with password: "+code);
                                     openDoor.send(code);
+
+                                    Timer timer2 = new Timer();
+                                    timer2.schedule(new TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            Log.info("[" + name + "] trying to open the door again after " + retryTime + "ms, with password: "+code);
+                                            openDoor.send(code);
+                                            return;
+                                        }
+                                    }, retryTime);
+
+
                                     return;
                                 }
                             }, waitDoorOpenTime);

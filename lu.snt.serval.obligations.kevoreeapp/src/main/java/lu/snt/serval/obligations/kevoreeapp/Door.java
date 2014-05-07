@@ -26,14 +26,14 @@ public class Door {
                 Date now=new Date();
                 String s= "Door is opened at "+now.toString();
                 org.kevoree.log.Log.info("[Door] "+s);
-                status.send(s);
+                status.send(ds);
             }
             if(da== DoorLockAction.CLOSEDOOR){
                 ds=DoorStatus.LOCKED;
                 Date now=new Date();
                 String s= "Door is closed at "+now.toString();
                 org.kevoree.log.Log.info("[Door] "+s);
-                status.send(s);
+                status.send(ds);
             }
         }
         catch (Exception ex){

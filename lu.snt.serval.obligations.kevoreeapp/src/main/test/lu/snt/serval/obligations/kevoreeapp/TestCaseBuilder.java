@@ -15,7 +15,7 @@ public class TestCaseBuilder {
         this.containerRoot=container;
     }
 
-    public void ChangeHCSSetting(int personTimer, int globalTimer, int doorTimer){
+    public void changeHCSSetting(int personTimer, int globalTimer, int doorTimer){
         ContainerNode node = containerRoot.getNodes().get(0);
         for(ComponentInstance c: node.getComponents())
         {

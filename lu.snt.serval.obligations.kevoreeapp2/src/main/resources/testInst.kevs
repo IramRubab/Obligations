@@ -1,0 +1,44 @@
+repo "http://repo1.maven.org/maven2/"
+include mvn:org.kevoree.library.java:org.kevoree.library.java.toys:3.5.3-SNAPSHOT
+include mvn:org.kevoree:org.kevoree.api:3.5.5-SNAPSHOT
+include mvn:org.kevoree.library.java:org.kevoree.library.java.channels:3.5.3-SNAPSHOT
+include mvn:org.kevoree:org.kevoree.model:3.5.5-SNAPSHOT
+include mvn:org.kevoree:org.kevoree.model:3.5.4
+include mvn:org.jetbrains.kotlin:kotlin-stdlib:0.7.271
+include mvn:org.kevoree.kcl:org.kevoree.kcl:7
+include mvn:org.objenesis:objenesis:1.2
+include mvn:org.kevoree.library.java:org.kevoree.library.java.javaNode:3.5.2
+include mvn:org.kevoree:org.kevoree.annotation.api:3.5.5-SNAPSHOT
+include mvn:org.kevoree.modeling:org.kevoree.modeling.microframework:1.10.3
+include mvn:org.kevoree.modeling:org.kevoree.modeling.microframework:1.10.4
+include mvn:org.kevoree.log:org.kevoree.log:1
+include mvn:org.java-websocket:Java-WebSocket:1.3.0
+include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:3.5.2
+include mvn:lu.snt.serval.obligations:lu.snt.serval.obligations.kevoreeapp2:1.0-SNAPSHOT
+include mvn:uk.com.robust-it:cloning:1.9.0
+include mvn:fr.inria.jfilter:jfilter-library:1.3
+include mvn:org.jetbrains.kotlin:kotlin-runtime:0.7.271
+include mvn:org.jetbrains.kotlin:kotlin-stdlib:0.6.1673
+include mvn:org.jetbrains.kotlin:kotlin-runtime:0.6.1673
+include mvn:org.kevoree:org.kevoree.annotation.api:3.5.4
+include mvn:org.kevoree:org.kevoree.api:3.5.4
+add node0 : JavaNode/3.5.2
+set node0.started = "true"
+add node0.heart : Instrument/1.0-SNAPSHOT
+set node0.heart.measurements = "0.0"
+set node0.heart.interval = "1000"
+set node0.heart.started = "true"
+add node0.ToyConsol569 : ToyConsole/3.5.3-SNAPSHOT
+set node0.ToyConsol569.started = "true"
+add AsyncBroa210 : AsyncBroadcast/3.5.3-SNAPSHOT
+set AsyncBroa210.started = "true"
+add AsyncBroa226 : AsyncBroadcast/3.5.3-SNAPSHOT
+set AsyncBroa226.started = "true"
+add sync : WSGroup/3.5.2
+set sync.port/node0 = "9000"
+set sync.started = "true"
+bind node0.ToyConsol569.textEntered AsyncBroa226
+bind node0.ToyConsol569.showText AsyncBroa210
+bind node0.heart.command AsyncBroa226
+bind node0.heart.pulse AsyncBroa210
+attach node0 sync

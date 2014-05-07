@@ -13,6 +13,7 @@
     <modules>
 		<module>../lu.snt.serval.obligations.api</module>
         <module>../lu.snt.serval.obligations.kevoreeapp</module>
+        <module>../lu.snt.serval.obligations.kevoreeapp2</module>
         <module>../lu.snt.serval.obligations.testing</module>
     </modules>
 

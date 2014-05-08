@@ -1,0 +1,20 @@
+Console Commands: 
+-----------------
+
+A- For instruments:
+--------------------
+ 
+componentname start				                ex: heart start				            //To start a component
+componentname stop				                ex: heart stop				            //To stop a component
+componentname measure double		        	ex: heart measure 56.2			        //To simulate measurement change
+componentname interval integer(millisecond)	    ex: heart interval 3000		        	//To send measurement at a different rate
+
+
+B- For HCS:
+-----------
+hcs obligation componentname min max		    ex: hcs obligation heart 42.5 100.5	    //To add an obligation on the measurement values between min and max
+
+hcs interval integer(millisecond)		        ex: hcs interval 10000 			        //To change the interval of all instrument checkings. Instruments need to be present in the obligation lists.
+											                                            //Interval needs to be bigger than all of the instruments interval rates.
+
+

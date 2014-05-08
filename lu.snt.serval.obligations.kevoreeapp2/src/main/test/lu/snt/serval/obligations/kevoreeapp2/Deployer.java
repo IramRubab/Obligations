@@ -46,6 +46,8 @@ public class Deployer extends KevoreeTestCase {
         tcb.addInstrument(pulseConf);
 
 
+
+
         this.deploy("node0",cr);  //this mendatory to deploy Kevoree
         waitLog("node0", "node0/* INFO: [HCS] Done", 1000000); //that the test case is completed successfully whenever the HCS prints done on the log
 

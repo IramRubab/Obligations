@@ -24,11 +24,18 @@ public class HCS {
 
 
     @Output
-    org.kevoree.api.Port ConsoleOut;
+    org.kevoree.api.Port consoleOut;
 
+    @Output
+    org.kevoree.api.Port hospitalOut;
 
     @Input
-    public void ConsoleIn(Object i) {
+    public void hospitalIn(Object i) {
+        consoleOut.send("[HCS]- Message received from hospital: "+ (String) i);
+    }
+
+    @Input
+    public void consoleIn(Object i) {
         String s = (String) i;
         String [] commands = ((String) i).split(" ");
         try{
@@ -46,12 +53,12 @@ public class HCS {
                 }
                 if(commands[1].trim().equals("obligation")){
                     addObligation(commands[2].trim(),Double.parseDouble(commands[3].trim()),Double.parseDouble(commands[4].trim()));
-                    ConsoleOut.send("[HCS] Obligation added");
+                    consoleOut.send("[HCS] Obligation added");
                 }
             }
         }
         catch(Exception ex){
-           ConsoleOut.send("[HCS] Console command error "+ex.getMessage());
+           consoleOut.send("[HCS] Console command error " + ex.getMessage());
         }
     }
 
@@ -82,13 +89,13 @@ public class HCS {
                     return;
                 Date now = new Date();
                 if((now.getTime()-msg.date.getTime())>interval){
-                    ConsoleOut.send("[HCS] Instrument "+po.name+" is not working regularly, HCS has detected a timeOut");
+                    consoleOut.send("[HCS] Instrument " + po.name + " is not working regularly, HCS has detected a timeOut");
                     Log.info("[HCS] Instrument "+po.name+" is not working regularly, HCS has detected a timeOut");
                 }
 
             }
             catch (Exception ex){
-                ConsoleOut.send("[HCS] checking instrument "+po.name+" failed: "+ex.getMessage());
+                consoleOut.send("[HCS] checking instrument " + po.name + " failed: " + ex.getMessage());
                 Log.info("[HCS] checking instrument "+po.name+" failed: "+ex.getMessage());
             }
         }
@@ -109,10 +116,10 @@ public class HCS {
     }
 
     private void obligationViolation(PulseMsg msg, PulseObligation po){
-        ConsoleOut.send("[HCS] EMERGENCY SITUATION DETECTED, "+msg.name+" measurement is "+msg.measurement+" tolerated levels are ["+po.min+" , "+po.max+"]! ");
-        Log.info("[HCS] EMERGENCY SITUATION DETECTED, "+msg.name+" measurement is "+msg.measurement+" tolerated levels are ["+po.min+" , "+po.max+"]! ");
-
+        consoleOut.send("[HCS] EMERGENCY SITUATION DETECTED, " + msg.name + " measurement is " + msg.measurement + " tolerated levels are [" + po.min + " , " + po.max + "]! ");
+        //Log.info("[HCS] EMERGENCY SITUATION DETECTED, "+msg.name+" measurement is "+msg.measurement+" tolerated levels are ["+po.min+" , "+po.max+"]! ");
         //To implement call hospital
+        hospitalOut.send(msg);
     }
 
     private void checkObligation(PulseMsg msg){
@@ -125,13 +132,7 @@ public class HCS {
     }
 
     private void saveLatest(PulseMsg msg) {
-        if (latest.containsKey(msg.name)){
-            latest.replace(msg.name,msg);
-        }
-        else
-        {
             latest.put(msg.name,msg);
-        }
     }
 
     public void addObligation(String name, double min, double max){
@@ -139,9 +140,6 @@ public class HCS {
         po.name=name;
         po.min=min;
         po.max=max;
-        if(obligations.containsKey(po.name)){
-            obligations.replace(po.name, po);
-        }
         obligations.put(po.name,po);
     }
 

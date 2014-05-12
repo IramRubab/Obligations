@@ -24,6 +24,12 @@ include mvn:org.kevoree:org.kevoree.annotation.api:3.5.4
 include mvn:org.kevoree:org.kevoree.api:3.5.4
 add node0 : JavaNode/3.5.2
 set node0.started = "true"
+add node0.dutyDoc : Doctor/1.0-SNAPSHOT
+set node0.dutyDoc.started = "true"
+add node0.personalDoc : Doctor/1.0-SNAPSHOT
+set node0.personalDoc.started = "true"
+add node0.hospital : Hospital/1.0-SNAPSHOT
+set node0.hospital.started = "true"
 add node0.Console : ToyConsole/3.5.3-SNAPSHOT
 set node0.Console.showInTab = "true"
 set node0.Console.started = "true"
@@ -33,18 +39,36 @@ set node0.HCS.started = "true"
 add InstrumentIn : AsyncBroadcast/3.5.3-SNAPSHOT
 set InstrumentIn.clone = "false"
 set InstrumentIn.started = "true"
+add AsyncBroa174 : AsyncBroadcast/3.5.3-SNAPSHOT
+set AsyncBroa174.started = "true"
+add AsyncBroa71 : AsyncBroadcast/3.5.3-SNAPSHOT
+set AsyncBroa71.started = "true"
+add AsyncBroa950 : AsyncBroadcast/3.5.3-SNAPSHOT
+set AsyncBroa950.started = "true"
 add ConsoleOut : AsyncBroadcast/3.5.3-SNAPSHOT
 set ConsoleOut.clone = "false"
 set ConsoleOut.started = "true"
+add AsyncBroa275 : AsyncBroadcast/3.5.3-SNAPSHOT
+set AsyncBroa275.started = "true"
 add ConsoleIn : AsyncBroadcast/3.5.3-SNAPSHOT
 set ConsoleIn.clone = "false"
 set ConsoleIn.started = "true"
 add sync : WSGroup/3.5.2
 set sync.port/node0 = "9000"
 set sync.started = "true"
-bind node0.HCS.ConsoleOut ConsoleIn
-bind node0.Console.textEntered ConsoleOut
+bind node0.HCS.hospitalIn AsyncBroa71
 bind node0.HCS.instrumentIn InstrumentIn
-bind node0.HCS.ConsoleIn ConsoleOut
+bind node0.dutyDoc.doctorOut AsyncBroa950
 bind node0.Console.showText ConsoleIn
+bind node0.HCS.hospitalOut AsyncBroa174
+bind node0.hospital.hcsIn AsyncBroa174
+bind node0.dutyDoc.doctorIn AsyncBroa275
+bind node0.personalDoc.doctorOut AsyncBroa950
+bind node0.hospital.doctorIn AsyncBroa950
+bind node0.personalDoc.doctorIn AsyncBroa275
+bind node0.Console.textEntered ConsoleOut
+bind node0.hospital.hcsOut AsyncBroa71
+bind node0.HCS.consoleOut ConsoleIn
+bind node0.hospital.doctorOut AsyncBroa275
+bind node0.HCS.consoleIn ConsoleOut
 attach node0 sync

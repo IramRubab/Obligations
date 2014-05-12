@@ -1,6 +1,7 @@
 package lu.snt.serval.obligations.kevoreeapp2;
 
 
+import lu.snt.serval.obligations.framework.DoctorBehavior;
 import lu.snt.serval.obligations.framework.InstrumentConfig;
 import org.kevoree.*;
 import org.kevoree.kevscript.KevScriptEngine;
@@ -27,6 +28,39 @@ public class TestCaseBuilder {
             }
         }
         return null;
+    }
+
+
+    public void changeHospitalWaitTime(int interval){
+        try
+        {
+            KevScriptEngine engine = new KevScriptEngine();
+            String command = "set node0.hospital.waitReplyTime = \""+String.valueOf(interval)+"\"";
+            engine.execute(command,containerRoot);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void changeDoctorBehavior(DoctorBehavior db){
+
+        try
+        {
+        KevScriptEngine engine = new KevScriptEngine();
+        String command = "set node0.personalDoc.waitReplyTime = \""+String.valueOf(db.waitReplyTime)+"\"";
+        engine.execute(command,containerRoot);
+            command = "set node0.personalDoc.behavior = \""+String.valueOf(db.behavior.ordinal())+"\"";
+            engine.execute(command,containerRoot);
+
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void addInstrument(InstrumentConfig ic){

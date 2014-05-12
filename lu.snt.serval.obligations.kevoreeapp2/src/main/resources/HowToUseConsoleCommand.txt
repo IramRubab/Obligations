@@ -13,8 +13,11 @@ componentname interval integer(millisecond)	    ex: heart interval 3000		       
 B- For HCS:
 -----------
 hcs obligation componentname min max		    ex: hcs obligation heart 42.5 100.5	    //To add an obligation on the measurement values between min and max
-
 hcs interval integer(millisecond)		        ex: hcs interval 10000 			        //To change the interval of all instrument checkings. Instruments need to be present in the obligation lists.
-											                                            //Interval needs to be bigger than all of the instruments interval rates.
 
+											                                            //Interval needs to be bigger than all of the instruments interval rates.
+C- Extra
+--------
+all start                                       //Starts all components at the same time
+all stop                                        //Stops all components at the same time
 

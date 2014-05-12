@@ -32,7 +32,7 @@ public class HCS {
         String s = (String) i;
         String [] commands = ((String) i).split(" ");
         try{
-            if(commands[0].equals("hcs")){
+            if(commands[0].equals("hcs")|| commands[0].equals("all")){
                 if (commands[1].trim().equals("start")) {
                     startTimer();
                 }
@@ -68,6 +68,7 @@ public class HCS {
     }
 
     private void stopTimer(){
+        latest=new HashMap<String, PulseMsg>();
         if(timerInstrumentCheck!=null){
             timerInstrumentCheck.cancel();
         }
@@ -77,6 +78,8 @@ public class HCS {
         for(PulseObligation po: obligations.values()){
             try{
                 PulseMsg msg=latest.get(po.name);
+                if(msg==null)
+                    return;
                 Date now = new Date();
                 if((now.getTime()-msg.date.getTime())>interval){
                     ConsoleOut.send("[HCS] Instrument "+po.name+" is not working regularly, HCS has detected a timeOut");

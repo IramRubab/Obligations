@@ -56,7 +56,7 @@ public class Instrument {
         String [] commands = ((String) i).split(" ");
         try {
 
-            if (commands[0].equals(context.getInstanceName())) {
+            if (commands[0].equals(context.getInstanceName())|| commands[0].equals("all")) {
                 if (commands[1].trim().equals("start")) {
                     startTimer();
                 }

@@ -1,6 +1,8 @@
 package lu.snt.serval.obligations.kevoreeapp2;
 
+import lu.snt.serval.obligations.framework.DoctorBehavior;
 import lu.snt.serval.obligations.framework.InstrumentConfig;
+import lu.snt.serval.obligations.framework.PersonAction;
 import org.junit.Test;
 import org.kevoree.ContainerRoot;
 import org.kevoree.loader.JSONModelLoader;
@@ -16,7 +18,7 @@ public class Deployer extends KevoreeTestCase {
     @Test
     public void startupChildTest() throws Exception {
 
-        bootstrap("node0", "test.kevs");    // Bootstrap and start kevoree
+        bootstrap("node0", "test.kevs"); // Bootstrap and start kevoree
         ContainerRoot cr= this.getCurrentModel("node0");
 
         // JSONModelLoader loader = new JSONModelLoader();
@@ -45,13 +47,19 @@ public class Deployer extends KevoreeTestCase {
         pulseConf.interval=2000;
         tcb.addInstrument(pulseConf);
 
-        // Ideally obligations will be set up here //
+        DoctorBehavior db = new DoctorBehavior();
+        db.behavior= PersonAction.WAITNO;
+        db.waitReplyTime=9000;
+        tcb.changeDoctorBehavior(db);
+
+        tcb.changeHospitalWaitTime(6000);
 
 
 
 
 
-        this.deploy("node0",cr);  //this mendatory to deploy Kevoree
+
+        this.deploy("node0",cr); //this mendatory to deploy Kevoree
         waitLog("node0", "node0/* INFO: [HCS] Done", 1000000); //that the test case is completed successfully whenever the HCS prints done on the log
 
 

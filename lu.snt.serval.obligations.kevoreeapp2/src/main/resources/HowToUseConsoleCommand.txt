@@ -3,7 +3,8 @@ Console Commands:
 
 A- For instruments:
 --------------------
- 
+For heart, pulse, blood
+
 componentname start				                ex: heart start				            //To start a component
 componentname stop				                ex: heart stop				            //To stop a component
 componentname measure double		        	ex: heart measure 56.2			        //To simulate measurement change

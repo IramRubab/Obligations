@@ -49,7 +49,7 @@ public class Deployer extends KevoreeTestCase {
 
         DoctorBehavior db = new DoctorBehavior();
         db.behavior= PersonAction.WAITNO;
-        db.waitReplyTime=9000;
+        db.waitReplyTime=4000;
         tcb.changeDoctorBehavior(db);
 
         tcb.changeHospitalWaitTime(6000);

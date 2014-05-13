@@ -1,8 +1,6 @@
 package lu.snt.serval.obligations.kevoreeapp2;
 
-import lu.snt.serval.obligations.framework.DoctorBehavior;
 import lu.snt.serval.obligations.framework.InstrumentConfig;
-import lu.snt.serval.obligations.framework.PersonAction;
 import org.junit.Test;
 import org.kevoree.ContainerRoot;
 import org.kevoree.loader.JSONModelLoader;
@@ -47,13 +45,7 @@ public class Deployer extends KevoreeTestCase {
         pulseConf.interval=2000;
         tcb.addInstrument(pulseConf);
 
-        DoctorBehavior db = new DoctorBehavior();
-        db.behavior= PersonAction.WAITNO;
-        db.waitReplyTime=9000;
-        tcb.changeDoctorBehavior(db);
-
-        tcb.changeHospitalWaitTime(6000);
-
+        // Ideally obligations will be set up here //
 
 
 

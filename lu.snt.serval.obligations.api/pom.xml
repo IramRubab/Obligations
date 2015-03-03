@@ -16,6 +16,11 @@
    
 
     <dependencies>
+        <dependency>
+            <groupId>lu.snt.serval.obligations</groupId>
+            <artifactId>lu.snt.serval.obligations.kevoreeapp</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

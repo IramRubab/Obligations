@@ -25,7 +25,7 @@ public class Deployer extends KevoreeTestCase {
 
         TestCaseBuilder tcb= new TestCaseBuilder(cr); //Create a new test case
 
-        tcb.ChangeHCSSetting(20000,60000,30000);   //for changing personTimer, globalTimer, doorTimer in HCS configuration
+        tcb.changeHCSSetting(20000,60000,30000);   //for changing personTimer, globalTimer, doorTimer in HCS configuration
 
         ArrayList<PersonId> t1a1 = new ArrayList<PersonId>();  // Create an address book with person behaviors
 
@@ -275,7 +275,7 @@ public class Deployer extends KevoreeTestCase {
                 tcb.addAddressBook(t1a1);  //Add address book to test case
 
                 this.deploy("node0",cr); */  //this mendatory to deploy Kevoree*/
->>>>>>> Stashed changes
+//Stashed changes;
 
 
         

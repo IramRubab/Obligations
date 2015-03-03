@@ -1,7 +1,7 @@
 repo "http://repo1.maven.org/maven2/"
-include mvn:org.kevoree.library.java:org.kevoree.library.java.toys:3.5.3-SNAPSHOT
+include mvn:org.kevoree.library.java:org.kevoree.library.java.toys:3.5.2
 include mvn:org.kevoree:org.kevoree.api:3.5.5-SNAPSHOT
-include mvn:org.kevoree.library.java:org.kevoree.library.java.channels:3.5.3-SNAPSHOT
+include mvn:org.kevoree.library.java:org.kevoree.library.java.channels:3.5.2
 include mvn:org.kevoree:org.kevoree.model:3.5.5-SNAPSHOT
 include mvn:org.kevoree:org.kevoree.model:3.5.4
 include mvn:org.kevoree.kcl:org.kevoree.kcl:7
@@ -30,27 +30,27 @@ add node0.personalDoc : Doctor/1.0-SNAPSHOT
 set node0.personalDoc.started = "true"
 add node0.hospital : Hospital/1.0-SNAPSHOT
 set node0.hospital.started = "true"
-add node0.Console : ToyConsole/3.5.3-SNAPSHOT
+add node0.Console : ToyConsole/3.5.2
 set node0.Console.showInTab = "true"
 set node0.Console.started = "true"
 add node0.HCS : HCS/1.0-SNAPSHOT
 set node0.HCS.interval = "10000"
 set node0.HCS.started = "true"
-add InstrumentIn : AsyncBroadcast/3.5.3-SNAPSHOT
+add InstrumentIn : AsyncBroadcast/3.5.2
 set InstrumentIn.clone = "false"
 set InstrumentIn.started = "true"
-add AsyncBroa174 : AsyncBroadcast/3.5.3-SNAPSHOT
+add AsyncBroa174 : AsyncBroadcast/3.5.2
 set AsyncBroa174.started = "true"
-add AsyncBroa71 : AsyncBroadcast/3.5.3-SNAPSHOT
+add AsyncBroa71 : AsyncBroadcast/3.5.2
 set AsyncBroa71.started = "true"
-add AsyncBroa950 : AsyncBroadcast/3.5.3-SNAPSHOT
+add AsyncBroa950 : AsyncBroadcast/3.5.2
 set AsyncBroa950.started = "true"
-add ConsoleOut : AsyncBroadcast/3.5.3-SNAPSHOT
+add ConsoleOut : AsyncBroadcast/3.5.2
 set ConsoleOut.clone = "false"
 set ConsoleOut.started = "true"
-add AsyncBroa275 : AsyncBroadcast/3.5.3-SNAPSHOT
+add AsyncBroa275 : AsyncBroadcast/3.5.2
 set AsyncBroa275.started = "true"
-add ConsoleIn : AsyncBroadcast/3.5.3-SNAPSHOT
+add ConsoleIn : AsyncBroadcast/3.5.2
 set ConsoleIn.clone = "false"
 set ConsoleIn.started = "true"
 add sync : WSGroup/3.5.2
